@@ -24,7 +24,8 @@ if($video == '' && $api== ''){
 	if($response->getStatus() === 200) {
 		$openload = $response->getContent();
 		if(strpos($openload, 'We are sorry!') !== False){
-			echo json_encode(array('error' => '404', 'msg' => 'File not found'));
+			echo 'File not found';
+// 			echo json_encode(array('error' => '404', 'msg' => 'File not found'));
 			exit();
 		}
 	    	$openload = explode('<span id="streamurl">', $openload)[1];
