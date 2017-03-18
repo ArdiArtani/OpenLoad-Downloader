@@ -27,7 +27,7 @@ if($video == ''){
     		$filename = explode('?', end(explode('/',$headers['Location'])))[0];
 	   	$file = explode('?', $headers['Location'])[0];
 	   	$size = $headers['Content-Length'];
-	   	
+		
 	   	//Download Code
 	   	set_time_limit(0);
 	   	header('Content-Type: video/mp4');
@@ -43,5 +43,9 @@ if($video == ''){
 	}else{
 		echo json_encode(array('error' => $response->getStatus(), 'msg' => 'Server error'));
 		exit();
+	}
+	
+	if($_GET['title']=='true'){
+		echo $filename;
 	}
 }
