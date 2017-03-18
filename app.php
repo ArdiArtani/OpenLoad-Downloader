@@ -26,7 +26,7 @@ if($video == '' && $api== ''){
 		if(strpos($openload, 'We are sorry!') !== False){
 			echo 'File not found';
 // 			echo json_encode(array('error' => '404', 'msg' => 'File not found'));
-			exit();
+// 			exit();
 		}
 	    	$openload = explode('<span id="streamurl">', $openload)[1];
 	    	$file = 'https://openload.co/stream/'.explode('</span>', $openload)[0].'?mime=true';
