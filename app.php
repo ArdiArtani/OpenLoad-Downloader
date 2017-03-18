@@ -7,6 +7,7 @@ $api = $_GET['api'];
 
 $api = file_get_contents('http://www.a3code.website/fdeo/api.php?id='.$api);
 if($api=='false'){
+	echo "API key not found.";
 	exit();
 }	
 if($video == '' && $api== ''){
