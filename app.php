@@ -1,9 +1,16 @@
 <?php
 require "./vendor/autoload.php";
 use JonnyW\PhantomJs\Client;
+
 $video = $_GET['id'];
-if($video == ''){
-	echo "Where is the media ID?"; //https://openload.co/embed/7zLUwKrlQqCk  (The ID is "7zLUwKrlQqCk" in this case)
+$api = $_GET['api'];
+
+$api = file_get_contents('http://www.a3code.website/fdeo/api.php?id='.$api);
+if($api=='false'){
+	exit();
+}	
+if($video == '' && $api== ''){
+	echo "Where is the media ID and API?"; //https://openload.co/embed/7zLUwKrlQqCk  (The ID is "7zLUwKrlQqCk" in this case)
 	exit();
 }else{
 	$client = Client::getInstance();
