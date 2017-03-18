@@ -44,8 +44,4 @@ if($video == ''){
 		echo json_encode(array('error' => $response->getStatus(), 'msg' => 'Server error'));
 		exit();
 	}
-	
-	if($_GET['title']=='true'){
-		echo $filename;
-	}
 }
