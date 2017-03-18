@@ -23,27 +23,10 @@ if($video == ''){
 			echo json_encode(array('error' => '404', 'msg' => 'File not found'));
 			exit();
 		}
-	    	$openload = explode('<span id="streamurl">', $openload)[1];
-	    	$file = 'https://openload.co/stream/'.explode('</span>', $openload)[0].'?mime=true';
-    		$headers = get_headers($file,1);
-    		
-    		//Final Args
-    		$filename = explode('?', end(explode('/',$headers['Location'])))[0];
-	   	$file = explode('?', $headers['Location'])[0];
-	   	$size = $headers['Content-Length'];
-	   	
-	   	//Download Code
-	   	set_time_limit(0);
-	   	header('Content-Type: video/mp4');
-		header('Content-Length: '.$size);
-	   	
-	   	$f = fopen($file, "rb");
-	   	while (!feof($f)) {
-		 	echo fread($f, 8*1024);
-		   	flush();
-		   	ob_flush();
-	   	}
-	   	exit();
+		
+  	$openload = explode('<span id="streamurl">', $openload)[1];
+  	$file = 'https://openload.co/stream/'.explode('</span>', $openload)[0].'?mime=true';
+  	echo $file;
 	}else{
 		echo json_encode(array('error' => $response->getStatus(), 'msg' => 'Server error'));
 		exit();
